@@ -5,6 +5,7 @@
 
 <mapper namespace="com.example.demo.mapper.MarketListMapper">
     
+    <!-- 마켓항목 적재 -->
     <insert id="insertMarketList" parameterType="MartListVO" >
 		INSERT INTO `shoppingMall`.`TB_MR_LIST`
 		(`MR_CD`,
