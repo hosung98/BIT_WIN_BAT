@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.MarketListMapper">
+    
+    <insert id="insertMarketList" parameterType="MartListVO" >
+		INSERT INTO `shoppingMall`.`TB_MR_LIST`
+		(`MR_CD`,
+		`KOR_NM`,
+		`ENG_NM`,
+		`SYS_DT`)
+		VALUES
+		(#{mr_cd},
+		#{kor_nm},
+		#{eng_nm},
+		sysdate())	
+    </insert>
+
+	<delete id="initMarketList">
+		TRUNCATE TB_MR_LIST;
+	</delete>
+	
+	<select id="selectMarketList" resultType="HashMap">
+		select * from tb_mr_list where mr_cd like 'KRW%'
+	</select>
+	
+	<delete id="initMarketTicker">
+		TRUNCATE TB_MR_TICKER;
+	</delete>
+		
+	<insert id="insertTicker" parameterType="MarkListPriceVO">
+		INSERT INTO `shoppingMall`.`TB_MR_TICKER`
+		(`mr_cd`,
+		`trade_date`,
+		`trade_time`,
+		`opening_price`,
+		`high_price`,
+		`low_price`,
+		`trade_price`,
+		`prev_closing_price`,
+		`change`,
+		`reg_dt`)
+		VALUES
+		(#{mr_cd},
+		#{trade_date},
+		#{trade_time},
+		#{opening_price},
+		#{high_price},
+		#{low_price},
+		#{trade_price},
+		#{prev_closing_price},
+		#{change},
+		sysdate())
+	</insert>
+</mapper>
